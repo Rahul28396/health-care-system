@@ -1,0 +1,42 @@
+.side-navbar {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    background-color: #1f2022;
+    color: #fff;
+    overflow: auto;
+    z-index: 9997;
+    padding: 0;
+    width:16rem;
+    height:100vh;
+
+    &__logo{
+        text-align: center;
+        // padding: auto;
+        margin: 24px 0;
+    }
+
+    &__menu{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        padding: 16px 0;
+    }
+
+    &__menu-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__menu-option{
+        margin: 12px;
+        padding-left: 24px;
+        
+        > a{
+            display: flex;
+            column-gap: 16px;
+        }
+    }
+}

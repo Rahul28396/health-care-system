@@ -23,14 +23,14 @@ const routes: Routes = [
     component: ErrorComponent
   },
   {
-    path: "**",
-    component: NotFoundComponent
-  },
-  {
     path: '',
     redirectTo : 'dashboard',
     pathMatch: 'full'
-  }
+  },
+  {
+    path: "**",
+    component: NotFoundComponent
+  },
 ];
 
 @NgModule({
