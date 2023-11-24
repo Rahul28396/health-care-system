@@ -1,0 +1,16 @@
+.dashboard {
+    &__overview {
+        display: flex;
+        column-gap: 24px;
+        justify-content: space-between;
+    }
+
+    &__overview-item {
+        background-color: #ffffffeb;
+        padding: 24px 36px;
+        width: 25%;
+        border-radius: 8px;
+        box-shadow: 10px 10px 10px grey;;
+    }
+
+}
