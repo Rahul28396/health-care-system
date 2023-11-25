@@ -8,7 +8,7 @@
     z-index: 9997;
     padding: 0;
     width:16rem;
-    height:100vh;
+    height:100%;
 
     &__logo{
         text-align: center;
@@ -30,12 +30,18 @@
     }
 
     &__menu-option{
-        margin: 12px;
         padding-left: 24px;
         
         > a{
             display: flex;
             column-gap: 16px;
+            text-decoration: none;
+            color: white;
+            margin: 12px;
+        }
+
+        &:hover , &--selected{
+            background-color: rgb(100, 97, 97);
         }
     }
 }

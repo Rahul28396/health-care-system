@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {
+    path: 'appointments',
+    loadChildren: () => import('./appointments/appointments.module').then(m => m.AppointmentsModule)
+  },
+  {
     path: 'signin',
     component: SignInComponent
   },
