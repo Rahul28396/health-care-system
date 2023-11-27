@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { AppointmentsRoutingModule } from './appointments-routing.module';
 import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { CreateAppointmentComponent } from './create-appointment/create-appointm
   ],
   imports: [
     CommonModule,
-    AppointmentsRoutingModule
+    AppointmentsRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class AppointmentsModule { }

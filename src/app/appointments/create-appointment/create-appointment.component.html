@@ -1,1 +1,78 @@
-<p>create-appointment works!</p>
+<form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Create new appointment</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstName" formControlName="firstName">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" formControlName="lastName">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="emailId" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="emailId" formControlName="email">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="phoneNumber" class="form-label">Phone No.</label>
+                            <input type="tel" class="form-control" id="phoneNumber" formControlName="phoneNo">
+                        </div>
+                        <label for="inputAddress" class="form-label">Address</label>
+                        <div class="row g-3" formGroupName="address">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="city" placeholder="City/Town"
+                                    formControlName="city">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="state" placeholder="State"
+                                    formControlName="state">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="country" placeholder="Country"
+                                    formControlName="country">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="zip" placeholder="Zipcode"
+                                    formControlName="zip">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="department" class="form-label">Department of the Doctor</label>
+                            <select id="department" class="form-select" formControlName="depatmentOfDoctor">
+                                <option selected>Choose...</option>
+                                <option value="othro">Ortho</option>
+                                <option value="gyno">Gyncologist</option>
+                                <option value="medicine">Medicine</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="doctor" class="form-label">Doctor</label>
+                            <input type="text" class="form-control" id="doctor" placeholder="Dr. X"
+                                formControlName="doctor">
+                        </div>
+                        <div class="col-12">
+                            <label for="symptoms" class="form-label">Symptoms</label>
+                            <input type="text" class="form-control" id="symptoms" placeholder="Injurey"
+                                formControlName="symptoms">
+                        </div>
+                    </div>
+                    <p>Form Status: {{ appointmentForm.status }}</p>
+                    <p>Form Value: {{ appointmentForm.value | json }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" (click)="updateAppoinment()" >Update application</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

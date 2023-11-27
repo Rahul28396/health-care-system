@@ -27,13 +27,15 @@
         list-style: none;
         display: flex;
         flex-direction: column;
+        margin: 0;
+        padding: 0;
     }
 
     &__menu-option{
         padding-left: 24px;
-        
         > a{
             display: flex;
+            align-items: baseline;
             column-gap: 16px;
             text-decoration: none;
             color: white;

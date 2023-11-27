@@ -1,10 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-  font-family: sans-serif
-}
 
 html,
 body {
@@ -30,5 +24,16 @@ th {
 }
 
 tr:nth-child(even) {
-  background-color: #dddddd;
+  background-color: #cc5858;
 }
+
+.fixed{
+  position: fixed;
+}
+
+.bottom-right{
+  bottom: 24px;
+  right: 48px;
+}
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

@@ -7,6 +7,7 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { RegisterComponent } from './register/register.component';
 import { SideNavbarComponent } from './navbars/side-navbar/side-navbar.component';
 import { HeaderNavbarComponent } from './navbars/header-navbar/header-navbar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HeaderNavbarComponent } from './navbars/header-navbar/header-navbar.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

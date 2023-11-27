@@ -9,49 +9,51 @@
     </section>
     <section class="side-navbar__menu">
         <ul class="side-navbar__menu-list">
-            <li class="side-navbar__menu-option side-navbar__menu-option--selected">
-                <a routerLink="/dashboard" >
+            <li
+                [ngClass]="currentUrl === '/dashboard' ? 'side-navbar__menu-option side-navbar__menu-option--selected' : 'side-navbar__menu-option'"
+            >
+                <a routerLink="/dashboard">
                     <i class="fa-solid fa-table-columns"></i>
                     Dashboard
                 </a>
             </li>
-            <li class="side-navbar__menu-option">
+            <li [ngClass]="currentUrl === '/appointments' ? 'side-navbar__menu-option side-navbar__menu-option--selected' : 'side-navbar__menu-option'">
                 <a routerLink="/appointments">
                     <i class="fa-solid fa-calendar-check"></i>
                     Appointments
                 </a>
             </li>
-            <li class="side-navbar__menu-option">
+            <li [ngClass]="currentUrl === '/departments' ? 'side-navbar__menu-option side-navbar__menu-option--selected' : 'side-navbar__menu-option'">
                 <a>
                     <i class="fa-solid fa-building"></i>
                     <span>Departments</span>
                 </a>
             </li>
-            <li class="side-navbar__menu-option">
+            <li [ngClass]="currentUrl === '/doctors' ? 'side-navbar__menu-option side-navbar__menu-option--selected' : 'side-navbar__menu-option'">
                 <a>
                     <i class="fa-solid fa-user-doctor"></i>
                     <span>Doctors</span>
                 </a>
             </li>
-            <li class="side-navbar__menu-option">
+            <li [ngClass]="currentUrl === '/patients' ? 'side-navbar__menu-option side-navbar__menu-option--selected' : 'side-navbar__menu-option'">
                 <a>
                     <i class="fa-solid fa-wheelchair"></i>
                     <span>Patients</span>
                 </a>
             </li>
-            <li class="side-navbar__menu-option">
+            <li [ngClass]="currentUrl === '/nurse' ? 'side-navbar__menu-option side-navbar__menu-option--selected' : 'side-navbar__menu-option'">
                 <a>
                     <i class="fa-solid fa-user-nurse"></i>
                     <span>Nurses</span>
                 </a>
             </li>
-            <li class="side-navbar__menu-option">
+            <li [ngClass]="currentUrl === '/lab-assistant' ? 'side-navbar__menu-option side-navbar__menu-option--selected' : 'side-navbar__menu-option'">
                 <a>
                     <i class="fa-solid fa-flask"></i>
                     <span>Lab assistant</span>
                 </a>
             </li>
-            <li class="side-navbar__menu-option">
+            <li [ngClass]="currentUrl === '/payment' ? 'side-navbar__menu-option side-navbar__menu-option--selected' : 'side-navbar__menu-option'">
                 <a>
                     <i class="fa-solid fa-credit-card"></i>
                     <span>Payment</span>
@@ -60,13 +62,13 @@
         </ul>
 
         <ul class="side-navbar__menu-list">
-            <li class="side-navbar__menu-option">
+            <li [ngClass]="currentUrl === '/settings' ? 'side-navbar__menu-option side-navbar__menu-option--selected' : 'side-navbar__menu-option'">
                 <a>
                     <i class="fa-solid fa-gear"></i>
                     <span>Settings</span>
                 </a>
             </li>
-            <li class="side-navbar__menu-option">
+            <li [ngClass]="currentUrl === '/faq' ? 'side-navbar__menu-option side-navbar__menu-option--selected' : 'side-navbar__menu-option'">
                 <a>
                     <i class="fa-solid fa-headset"></i>
                     <span>FAQ & Support</span>
