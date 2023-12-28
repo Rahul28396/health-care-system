@@ -1,7 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Appointment } from 'src/app/models/appointments/appointment.model';
 import { AppointmentsService } from '../appointments.service';
-import { count } from 'rxjs';
 
 @Component({
   selector: 'app-appointment-list',
@@ -27,7 +26,6 @@ export class AppointmentListComponent implements OnInit {
 
   loadAppoitments(): void{
     const start = (this.currentPage - 1)*5;
-    console.log(start,count);
     this.appointments = this.appointmentService.loadAppointments(start, this.itemsPerPage);
   }
 }
