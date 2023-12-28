@@ -8,6 +8,7 @@ import { RegisterComponent } from './register/register.component';
 import { SideNavbarComponent } from './navbars/side-navbar/side-navbar.component';
 import { HeaderNavbarComponent } from './navbars/header-navbar/header-navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonCustomModule } from './common/common-custom.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CommonCustomModule,
     NgbModule
   ],
   providers: [],

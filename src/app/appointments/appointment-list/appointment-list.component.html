@@ -1,125 +1,54 @@
 <section class="container">
     <h2>Appointments</h2>
+    <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+        Dignissimos nisi eos explicabo totam porro aliquid illo, 
+        nam architecto possimus laudantium commodi rem dolorem quisquam repellat debitis. 
+        Quam fugiat necessitatibus modi.
+    </p>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Id </th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone no.</th>
+                <th scope="col">Address</th>
+                <th scope="col">Department</th>
+                <th scope="col">Dcotor</th>
+                <th scope="col">Symptoms</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td >Larry the Bird</td>
-                <td >Mondal</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td >Larry the Bird</td>
-                <td >Mondal</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td >Larry the Bird</td>
-                <td >Mondal</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td >Larry the Bird</td>
-                <td >Mondal</td>
-                <td>@twitter</td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td >Larry the Bird</td>
-                <td >Mondal</td>
-                <td>@twitter</td>
-            </tr><tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td >Larry the Bird</td>
-                <td >Mondal</td>
-                <td>@twitter</td>
+            <tr *ngFor="let appointment of appointments">
+                <th scope="row">{{appointment.patientId}}</th>
+                <td>{{appointment.patientName}}</td>
+                <td>{{appointment.email}}</td>
+                <td>{{appointment.phone}}</td>
+                <td>{{appointment.address | address}}</td>
+                <td>{{appointment.deptName}}</td>
+                <td>{{appointment.doctorName}}</td>
+                <td>{{appointment.symptoms}}</td>
+                <td>Edit | Delete</td>
             </tr>
         </tbody>
     </table>
-    <button type="button" class="btn btn-primary fixed bottom-right" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+    <app-pagination 
+        [numberOfItems]="appointmentService.totalAppointments"
+        [itemsPerPage]="itemsPerPage"
+        [currentPage]="currentPage"
+        [numberOfPages]="numberOfPages"
+        (onChangePage)="onChangePageNumber($event)"
+    />
+
+    <button 
+        type="button" 
+        class="btn btn-primary fixed bottom-right" 
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+    >
         <i class="fa-solid fa-plus"></i>
         Create new Appointment
     </button>
