@@ -5,6 +5,7 @@ import { AppointmentsRoutingModule } from './appointments-routing.module';
 import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonCustomModule } from '../common/common-custom.module';
+import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { CommonCustomModule } from '../common/common-custom.module';
     CommonModule,
     AppointmentsRoutingModule,
     CommonCustomModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    ModalModule.forChild()
+  ],
+  providers: [BsModalRef]
 })
 export class AppointmentsModule { }

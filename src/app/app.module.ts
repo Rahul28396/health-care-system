@@ -9,6 +9,7 @@ import { SideNavbarComponent } from './navbars/side-navbar/side-navbar.component
 import { HeaderNavbarComponent } from './navbars/header-navbar/header-navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonCustomModule } from './common/common-custom.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CommonCustomModule } from './common/common-custom.module';
     BrowserModule,
     AppRoutingModule,
     CommonCustomModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

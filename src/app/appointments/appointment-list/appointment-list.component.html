@@ -6,6 +6,7 @@
         nam architecto possimus laudantium commodi rem dolorem quisquam repellat debitis. 
         Quam fugiat necessitatibus modi.
     </p>
+    
     <table class="table table-striped">
         <thead>
             <tr>
@@ -21,17 +22,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let appointment of appointments">
-                <th scope="row">{{appointment.patientId}}</th>
-                <td>{{appointment.patientName}}</td>
-                <td>{{appointment.email}}</td>
-                <td>{{appointment.phone}}</td>
-                <td>{{appointment.address | address}}</td>
-                <td>{{appointment.deptName}}</td>
-                <td>{{appointment.doctorName}}</td>
-                <td>{{appointment.symptoms}}</td>
-                <td>Edit | Delete</td>
+            <tr *ngIf="!appointments.length;else appointmentList">
+                <td colspan="9" scope="col" class="text-center">
+                    No appointments available. Please create appoinment.
+                </td>
             </tr>
+            <ng-template #appointmentList>
+                <tr *ngFor="let appointment of appointments" >
+                    <th scope="row">{{appointment.patientId}}</th>
+                    <td>{{appointment.patientName}}</td>
+                    <td>{{appointment.email}}</td>
+                    <td>{{appointment.phone}}</td>
+                    <td>{{appointment.address | address}}</td>
+                    <td>{{appointment.deptName}}</td>
+                    <td>{{appointment.doctorName}}</td>
+                    <td>{{appointment.symptoms}}</td>
+                    <td>Edit | Delete</td>
+                </tr>
+            </ng-template>
         </tbody>
     </table>
 
@@ -45,12 +53,10 @@
 
     <button 
         type="button" 
-        class="btn btn-primary fixed bottom-right" 
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
+        class="btn btn-primary fixed bottom-right"
+        (click)="openModal()"
     >
         <i class="fa-solid fa-plus"></i>
         Create new Appointment
     </button>
 </section>
-<app-create-appointment />

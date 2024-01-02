@@ -1,6 +1,8 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild, inject } from '@angular/core';
 import { Appointment } from 'src/app/models/appointments/appointment.model';
 import { AppointmentsService } from '../appointments.service';
+import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
+import { CreateAppointmentComponent } from '../create-appointment/create-appointment.component';
 
 @Component({
   selector: 'app-appointment-list',
@@ -12,8 +14,11 @@ export class AppointmentListComponent implements OnInit {
   currentPage: number = 1;
   itemsPerPage: number = 5;
   appointments: Array<Appointment> = [];
+  modalRef?: BsModalRef;
   appointmentService = inject(AppointmentsService);
   numberOfPages: number = Math.floor(this.appointmentService.totalAppointments / this.itemsPerPage) + 1;
+
+  constructor(private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.loadAppoitments();
@@ -24,8 +29,29 @@ export class AppointmentListComponent implements OnInit {
     this.loadAppoitments();
   }
 
-  loadAppoitments(): void{
-    const start = (this.currentPage - 1)*5;
+  loadAppoitments(): void {
+    const start = (this.currentPage - 1) * 5;
     this.appointments = this.appointmentService.loadAppointments(start, this.itemsPerPage);
+  }
+
+  createAppointment(newAppointment: Appointment): void {
+    this.appointmentService.createAppointment(newAppointment);
+    this.closeModal();
+  }
+
+  openModal() {
+    const initialState: ModalOptions = {
+      initialState: {
+        list: ['Open a modal with component', 'Pass your data', 'Do something else', '...'],
+        title: 'Modal with component'
+      }
+    };
+    this.modalRef = this.modalService.show(CreateAppointmentComponent, initialState);
+    this.modalRef.content.closeBtnName = 'Close';
+  }
+
+  closeModal() {
+    console.log(this.modalRef);
+    this.modalRef?.hide();
   }
 }

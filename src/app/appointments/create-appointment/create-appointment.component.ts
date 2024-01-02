@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { numberValidator, phoneNumberValidator } from 'src/app/utils/validation-function';
+import { AppointmentsService } from '../appointments.service';
+import { Appointment } from 'src/app/models/appointments/appointment.model';
+import { Address } from 'src/app/models/address.model';
 
 @Component({
   selector: 'app-create-appointment',
@@ -9,35 +12,26 @@ import { numberValidator, phoneNumberValidator } from 'src/app/utils/validation-
 })
 export class CreateAppointmentComponent {
 
-  constructor(private formBuilderService: FormBuilder){}
+  @Output()
+  onSubmit: EventEmitter<Appointment> = new EventEmitter<Appointment>();
 
-  appointmentForm0 = new FormGroup({
-    firstName : new FormControl('Rahul'),
-    lastName: new FormControl('Mondal'),
-    email: new FormControl('rahul@gmail.com'),
-    phoneNo: new FormControl(6294469294),
-    address: new FormGroup({
-      city: new FormControl('Arambagh'),
-      state: new FormControl('West Bengal'),
-      country: new FormControl('India'),
-      zip: new FormControl(712602)
-    }),
-    depatmentOfDoctor: new FormControl('othro'),
-    doctor: new FormControl('Dr. Chutiya gandu'),
-    symptoms: new FormControl('Moner rog')
-  });
+  @Output()
+  onClose: EventEmitter<void> = new EventEmitter<void>();
+
+  appointmentService = inject(AppointmentsService);
+  formBuilderService = inject(FormBuilder);
 
   appointmentForm = this.formBuilderService.group({
-    firstName : ['',Validators.required],
-    lastName: ['',Validators.required],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
     email: ['',
       [
         Validators.required,
         Validators.email
       ]
     ],
-    phoneNo: [
-      629446929,
+    phone: [
+      '',
       [
         Validators.required,
         numberValidator(),
@@ -45,33 +39,46 @@ export class CreateAppointmentComponent {
       ]
     ],
     address: this.formBuilderService.group({
-      city: ['Arambagh',Validators.required],
-      state: ['West Bengal',Validators.required],
-      country: ['India',Validators.required],
-      zip: [712602,Validators.required]
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      country: ['', Validators.required],
+      pincode: ['', Validators.required]
     }),
-    depatmentOfDoctor: ['othro',Validators.required],
-    doctor: ['Dr. Chutiya gandu',Validators.required],
+    deptName: ['', Validators.required],
+    doctorName: ['', Validators.required],
     symptoms: this.formBuilderService.array([])
   });
 
-  get firstName(){
+  get firstName() {
     return this.appointmentForm.get('firstName');
   }
 
-  get symptoms(){
+  get symptoms() {
     return this.appointmentForm.get('symptoms') as FormArray;
   }
 
-  addSymptom(){
-    this.symptoms.push(this.formBuilderService.control(''))
+  addSymptom() {
+    this.symptoms.push(this.formBuilderService.control('knee pain'))
   }
 
-  removeSymptom(i:number){
+  removeSymptom(i: number) {
     this.symptoms.removeAt(i);
   }
 
-  onSubmit(){
-    console.log(this.appointmentForm.value);
+  onSave() {
+    const formValue = this.appointmentForm.value;
+    const newAppoitment = new Appointment();
+    newAppoitment.patientId = Math.floor(Math.random()*90000) + 10000;
+    newAppoitment.patientName = `${formValue.firstName} ${formValue.lastName}`;
+    newAppoitment.email = formValue.email as string;
+    newAppoitment.phone = Number(formValue.phone);
+    newAppoitment.address = formValue.address as Address;
+    newAppoitment.deptName = formValue.deptName as string;
+    newAppoitment.doctorName = formValue.doctorName as string;
+    newAppoitment.symptoms = this.symptoms.value as Array<string>;
+  }
+
+  closeModal(){
+    this.onClose.emit();
   }
 }
