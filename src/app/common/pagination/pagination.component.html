@@ -13,7 +13,7 @@
             </a>
         </li>
         <li class="page-item">
-            <button class="page-link" [disabled]="isNextButtonDisabled">Next</button>
+            <button class="page-link" (click)="changePage(currentPage + 1)" [disabled]="isNextButtonDisabled">Next</button>
         </li>
     </ul>
 </nav>

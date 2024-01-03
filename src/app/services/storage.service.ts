@@ -21,14 +21,7 @@ export class StorageService {
     return value;
   }
 
-  updateValueOf<T>(storageKey: string, value:T): T{
-    const data = this.getAllValueOf(storageKey);
-    data.push(value);
+  updateValueOf<T>(storageKey: string, data:Array<T>): void{
     localStorage.setItem(storageKey,JSON.stringify(data));
-    return value;
-  }
-
-  deleteValueOf<T>(storageKey: string, value: Array<T>): void{
-    localStorage.setItem(JSON.stringify(value),storageKey);
   }
 }

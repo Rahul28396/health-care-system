@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef, inject } from '@angular/core';
 import { Appointment } from 'src/app/models/appointments/appointment.model';
 import { AppointmentsService } from '../appointments.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { DeleteConfirmationModalComponent } from 'src/app/common/delete-confirmation-modal/delete-confirmation-modal.component';
 
 @Component({
   selector: 'app-appointment-list',
@@ -15,7 +16,9 @@ export class AppointmentListComponent implements OnInit {
   appointments: Array<Appointment> = [];
   modalRef?: BsModalRef;
   appointmentService = inject(AppointmentsService);
-  numberOfPages: number = Math.floor(this.appointmentService.totalAppointments / this.itemsPerPage) + 1;
+  selectedAppointment?: Appointment;
+  deleteConfirmationText: string = '';
+  get numberOfPages(): number { return Math.floor(this.appointmentService.totalAppointments / this.itemsPerPage) + 1; }
 
   constructor(private modalService: BsModalService) { }
 
@@ -39,7 +42,19 @@ export class AppointmentListComponent implements OnInit {
     this.loadAppoitments();
   }
 
-  openModal(templateRef: TemplateRef<void>) {
+  deleteAppointment(element: Appointment) {
+    this.appointmentService.deleteAppointment(element);
+    this.loadAppoitments();
+    this.closeModal();
+  }
+
+  openDeleteAppointmentModal(templateRef: TemplateRef<void>, element: Appointment): void {
+    this.deleteConfirmationText = `Do you sure want to delete appointment: ${element.id}?`
+    this.selectedAppointment = element;
+    this.modalRef = this.modalService.show(templateRef);
+  }
+
+  openCreateAppointmentModal(templateRef: TemplateRef<void>) {
     this.modalRef = this.modalService.show(templateRef);
   }
 

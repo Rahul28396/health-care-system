@@ -10,7 +10,9 @@ export class AppointmentsService {
 
   appointments: Array<Appointment> = [];
 
-  totalAppointments = this.appointments.length;
+  get totalAppointments(){
+   return this.appointments.length;
+  }
 
   storageService= inject(StorageService);
 
@@ -22,7 +24,11 @@ export class AppointmentsService {
   }
 
   createAppointment(newAppointment: Appointment): void {
-    newAppointment.id = this.totalAppointments + 1;
     this.storageService.addValueTo<Appointment>(STORAGE_TYPE.APPOINTMENT,newAppointment);
+  }
+
+  deleteAppointment(appointment:Appointment): void{
+    this.appointments = this.appointments.filter(item => item.id !== appointment.id );
+    this.storageService.updateValueOf(STORAGE_TYPE.APPOINTMENT,this.appointments)
   }
 }

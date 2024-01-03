@@ -68,6 +68,7 @@ export class CreateAppointmentComponent {
   onSave() {
     const formValue = this.appointmentForm.value;
     const newAppoitment = new Appointment();
+    newAppoitment.id = Math.floor(Math.random()*90000) + 10000;
     newAppoitment.patientId = Math.floor(Math.random()*90000) + 10000;
     newAppoitment.patientName = `${formValue.firstName} ${formValue.lastName}`;
     newAppoitment.email = formValue.email as string;

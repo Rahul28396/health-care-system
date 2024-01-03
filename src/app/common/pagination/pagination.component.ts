@@ -27,7 +27,7 @@ export class PaginationComponent {
   }
 
   get isNextButtonDisabled() {
-    return this.currentPage !== this.pages.length+1;
+    return this.currentPage === this.pages.length+1;
   }
 
   get pages(): Array<number>{
@@ -40,7 +40,6 @@ export class PaginationComponent {
 
   changePage(pageIndex: number): void{
     this.currentPage = pageIndex;
-    console.log(this.currentPage);
     this.onChangePage.emit(this.currentPage);
   }
 }

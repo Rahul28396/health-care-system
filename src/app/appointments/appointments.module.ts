@@ -6,11 +6,13 @@ import { CreateAppointmentComponent } from './create-appointment/create-appointm
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonCustomModule } from '../common/common-custom.module';
 import { BsModalRef, ModalModule } from 'ngx-bootstrap/modal';
+import { EditAppointmentComponent } from './edit-appointment/edit-appointment.component';
 
 @NgModule({
   declarations: [
     AppointmentListComponent,
-    CreateAppointmentComponent
+    CreateAppointmentComponent,
+    EditAppointmentComponent
   ],
   imports: [
     CommonModule,
