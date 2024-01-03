@@ -9,10 +9,10 @@ export class AppointmentsService {
   appointments: Array<Appointment> = [];
 
   totalAppointments = this.appointments.length;
-
+  
 
   loadAppointments(start: number, count: number): Array<Appointment> {
-    const appointments = this.appointments;
+    const appointments = [...this.appointments];
     return appointments.splice(start, count);
   }
 
