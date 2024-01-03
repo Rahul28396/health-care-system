@@ -1,12 +1,12 @@
 <section class="container">
     <h2>Appointments</h2>
     <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-        Dignissimos nisi eos explicabo totam porro aliquid illo, 
-        nam architecto possimus laudantium commodi rem dolorem quisquam repellat debitis. 
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Dignissimos nisi eos explicabo totam porro aliquid illo,
+        nam architecto possimus laudantium commodi rem dolorem quisquam repellat debitis.
         Quam fugiat necessitatibus modi.
     </p>
-    
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -28,7 +28,7 @@
                 </td>
             </tr>
             <ng-template #appointmentList>
-                <tr *ngFor="let appointment of appointments" >
+                <tr *ngFor="let appointment of appointments">
                     <th scope="row">{{appointment.patientId}}</th>
                     <td>{{appointment.patientName}}</td>
                     <td>{{appointment.email}}</td>
@@ -43,20 +43,18 @@
         </tbody>
     </table>
 
-    <app-pagination 
-        [numberOfItems]="appointmentService.totalAppointments"
-        [itemsPerPage]="itemsPerPage"
-        [currentPage]="currentPage"
-        [numberOfPages]="numberOfPages"
-        (onChangePage)="onChangePageNumber($event)"
-    />
+    <app-pagination [numberOfItems]="appointmentService.totalAppointments" [itemsPerPage]="itemsPerPage"
+        [currentPage]="currentPage" [numberOfPages]="numberOfPages" (onChangePage)="onChangePageNumber($event)" />
 
-    <button 
-        type="button" 
-        class="btn btn-primary fixed bottom-right"
-        (click)="openModal()"
-    >
+    <button type="button" class="btn btn-primary fixed bottom-right" (click)="openModal(createAppointmentModal)">
         <i class="fa-solid fa-plus"></i>
         Create new Appointment
     </button>
 </section>
+
+<ng-template #createAppointmentModal>
+    <app-create-appointment 
+        (onClose)="closeModal()" 
+        (onSubmit)="createAppointment($event)"
+    />
+</ng-template>

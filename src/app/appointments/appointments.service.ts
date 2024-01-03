@@ -17,8 +17,9 @@ export class AppointmentsService {
   }
 
   createAppointment(newAppointment: Appointment): void {
-    newAppointment.id = this.appointments.length + 1;
+    newAppointment.id = this.totalAppointments + 1;
+    debugger;
     this.appointments.push(newAppointment);
-    console.log(this.appointments);
+    console.log(this.appointments.length);
   }
 }

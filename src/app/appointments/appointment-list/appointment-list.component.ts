@@ -37,21 +37,14 @@ export class AppointmentListComponent implements OnInit {
   createAppointment(newAppointment: Appointment): void {
     this.appointmentService.createAppointment(newAppointment);
     this.closeModal();
+    this.loadAppoitments();
   }
 
-  openModal() {
-    const initialState: ModalOptions = {
-      initialState: {
-        list: ['Open a modal with component', 'Pass your data', 'Do something else', '...'],
-        title: 'Modal with component'
-      }
-    };
-    this.modalRef = this.modalService.show(CreateAppointmentComponent, initialState);
-    this.modalRef.content.closeBtnName = 'Close';
+  openModal(templateRef: TemplateRef<void>) {
+    this.modalRef = this.modalService.show(templateRef);
   }
 
   closeModal() {
-    console.log(this.modalRef);
     this.modalRef?.hide();
   }
 }

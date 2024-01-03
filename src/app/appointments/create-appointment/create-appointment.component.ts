@@ -76,6 +76,7 @@ export class CreateAppointmentComponent {
     newAppoitment.deptName = formValue.deptName as string;
     newAppoitment.doctorName = formValue.doctorName as string;
     newAppoitment.symptoms = this.symptoms.value as Array<string>;
+    this.onSubmit.emit(newAppoitment);
   }
 
   closeModal(){
