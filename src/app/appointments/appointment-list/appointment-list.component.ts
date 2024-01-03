@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, OnInit, TemplateRef, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, TemplateRef, inject } from '@angular/core';
 import { Appointment } from 'src/app/models/appointments/appointment.model';
 import { AppointmentsService } from '../appointments.service';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
-import { CreateAppointmentComponent } from '../create-appointment/create-appointment.component';
 
 @Component({
   selector: 'app-appointment-list',
