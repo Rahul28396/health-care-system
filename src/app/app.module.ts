@@ -10,6 +10,7 @@ import { HeaderNavbarComponent } from './navbars/header-navbar/header-navbar.com
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonCustomModule } from './common/common-custom.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     CommonCustomModule,
     NgbModule,

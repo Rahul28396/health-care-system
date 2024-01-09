@@ -35,6 +35,20 @@ tr:nth-child(even) {
   bottom: 24px;
   right: 48px;
 }
+
+.text-align-left{
+  text-align: left;
+}
+
+.text-align-center{
+  text-align: center;
+}
+
+.error-text{
+  color: #cc5858;
+  font-weight: 500;
+}
+
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 
