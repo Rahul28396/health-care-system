@@ -27,24 +27,24 @@
     </section>
 
     <section class="dashboard__survey">
-
+        <canvasjs-chart [options]="chartOptions"></canvasjs-chart>
     </section>
 
     <section class="dashboard__last-appointments">
         <table>
             <tr>
-              <th>Company</th>
-              <th>Contact</th>
-              <th>Country</th>
-              <th>Actions</th>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+                <th>Actions</th>
             </tr>
             <tr *ngFor="let item of appointments">
-              <td>Alfreds Futterkiste</td>
-              <td>Maria Anders</td>
-              <td>Germany</td>
-              <td>Edit|Delete</td>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+                <td>Edit|Delete</td>
             </tr>
-          </table>
-          
+        </table>
+
     </section>
 </section>
