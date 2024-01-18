@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header-navbar',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class HeaderNavbarComponent {
 
+  authService = inject(AuthService);
+
+  logout(){
+    this.authService.logout();
+  }
 }

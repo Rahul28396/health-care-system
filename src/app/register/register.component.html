@@ -1,1 +1,35 @@
-<p>register works!</p>
+<div class="registration-container">
+    <h2>Register</h2>
+    <form class="registration-form" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" formControlName="firstName">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" formControlName="lastName">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" formControlName="email">
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" formControlName="password">
+        </div>
+        <div class="form-group">
+            <label for="confrim_password">Confirm Password:</label>
+            <input type="confrim_password" id="confrim_password" name="confrimPassword" formControlName="confrimPassword">
+        </div>
+        <div class="form-group">
+            <button type="submit">Register</button>
+        </div>
+        <div class="form-group">
+            <button type="button" (click)="goToLoginPage()">Login</button>
+        </div>
+    </form>
+</div>

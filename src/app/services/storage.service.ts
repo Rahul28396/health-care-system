@@ -14,6 +14,13 @@ export class StorageService {
     return [];
   }
 
+  getValueOf<T>(storageKey: string): T | undefined{
+    const value = localStorage.getItem(storageKey);
+    if(typeof value === 'string')
+      return JSON.parse(value);
+    return undefined;
+  }
+
   addValueTo<T>(storageKey: string, value:T): T {
     const data = this.getAllValueOf(storageKey);
     data.push(value);
@@ -21,7 +28,11 @@ export class StorageService {
     return value;
   }
 
-  updateValueOf<T>(storageKey: string, data:Array<T>): void{
+  updateValueOf<T>(storageKey: string, data:T): void{
     localStorage.setItem(storageKey,JSON.stringify(data));
+  }
+
+  removeValue(storageKey: string): void{
+    localStorage.removeItem(storageKey);
   }
 }

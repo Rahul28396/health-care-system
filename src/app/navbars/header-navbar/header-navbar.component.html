@@ -1,4 +1,4 @@
-<section  class="header-navbar">
+<section class="header-navbar">
     <ul>
         <li>
             <i class="fa-solid fa-bars"></i>
@@ -9,13 +9,12 @@
             <a><i class="fa-solid fa-language"></i></a>
         </li>
         <li>
-            <a routerLink="/signin"><i class="fa-solid fa-bell"></i></a>
+            <a><i class="fa-solid fa-bell"></i></a>
         </li>
         <li>
-            <a>
-                <i class="fa-solid fa-user"></i>
-                <i class="fa-solid fa-angle-down"></i>
-            </a>
+            <button (click)="logout()">
+                Logout
+            </button>
         </li>
     </ul>
 </section>
