@@ -19,6 +19,11 @@ const routes: Routes = [
     loadChildren: () => import('./appointments/appointments.module').then(m => m.AppointmentsModule),
   },
   {
+    path: 'departments',
+    canActivate: [authGuard],
+    loadChildren: () => import('./departments/departments.module').then(m => m.DepartmentsModule),
+  },
+  {
     path: 'signin',
     canActivate: [loginGuard],
     component: SignInComponent,

@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li [ngClass]="currentUrl === '/departments' ? 'side-navbar__menu-option side-navbar__menu-option--selected' : 'side-navbar__menu-option'">
-                <a>
+                <a routerLink="/departments">
                     <i class="fa-solid fa-building"></i>
                     <span>Departments</span>
                 </a>
@@ -41,7 +41,7 @@
                     <span>Patients</span>
                 </a>
             </li>
-            <li [ngClass]="currentUrl === '/nurse' ? 'side-navbar__menu-option side-navbar__menu-option--selected' : 'side-navbar__menu-option'">
+            <li [ngClass]="currentUrl === '/nurses' ? 'side-navbar__menu-option side-navbar__menu-option--selected' : 'side-navbar__menu-option'">
                 <a>
                     <i class="fa-solid fa-user-nurse"></i>
                     <span>Nurses</span>
