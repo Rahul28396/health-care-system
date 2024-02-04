@@ -3,6 +3,7 @@ import { Appointment } from 'src/app/models/appointments/appointment.model';
 import { AppointmentsService } from '../appointments.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { DeleteConfirmationModalComponent } from 'src/app/common/delete-confirmation-modal/delete-confirmation-modal.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-appointment-list',
@@ -20,7 +21,10 @@ export class AppointmentListComponent implements OnInit {
   deleteConfirmationText: string = '';
   get numberOfPages(): number { return Math.floor(this.appointmentService.totalAppointments / this.itemsPerPage) + 1; }
 
-  constructor(private modalService: BsModalService) { }
+  constructor(
+    private _modalService: BsModalService,
+    private _router: Router,
+    private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loadAppoitments();
@@ -36,12 +40,6 @@ export class AppointmentListComponent implements OnInit {
     this.appointments = this.appointmentService.loadAppointments(start, this.itemsPerPage);
   }
 
-  createAppointment(newAppointment: Appointment): void {
-    this.appointmentService.createAppointment(newAppointment);
-    this.closeModal();
-    this.loadAppoitments();
-  }
-
   deleteAppointment(element: Appointment) {
     this.appointmentService.deleteAppointment(element);
     this.loadAppoitments();
@@ -51,18 +49,16 @@ export class AppointmentListComponent implements OnInit {
   openDeleteAppointmentModal(templateRef: TemplateRef<void>, element: Appointment): void {
     this.deleteConfirmationText = `Do you sure want to delete appointment: ${element.id}?`
     this.selectedAppointment = element;
-    this.modalRef = this.modalService.show(templateRef,{
-      class: 'modal-dialog-centered'
-    });
-  }
-
-  openCreateAppointmentModal(templateRef: TemplateRef<void>) {
-    this.modalRef = this.modalService.show(templateRef,{
+    this.modalRef = this._modalService.show(templateRef,{
       class: 'modal-dialog-centered'
     });
   }
 
   closeModal() {
     this.modalRef?.hide();
+  }
+
+  goToPage(page: string): void{
+    this._router.navigate([page],{relativeTo: this._activatedRoute});
   }
 }

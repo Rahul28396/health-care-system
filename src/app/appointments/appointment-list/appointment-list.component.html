@@ -49,18 +49,11 @@
     <app-pagination [numberOfItems]="appointmentService.totalAppointments" [itemsPerPage]="itemsPerPage"
         [currentPage]="currentPage" [numberOfPages]="numberOfPages" (onChangePage)="onChangePageNumber($event)" />
 
-    <button type="button" class="btn btn-primary fixed bottom-right" (click)="openCreateAppointmentModal(createAppointmentModal)">
+    <button type="button" class="btn btn-primary fixed bottom-right" (click)="goToPage('create-appoinment')">
         <i class="fa-solid fa-plus"></i>
         Create new Appointment
     </button>
 </section>
-
-<ng-template #createAppointmentModal>
-    <app-create-appointment 
-        (onClose)="closeModal()" 
-        (onSubmit)="createAppointment($event)"
-    />
-</ng-template>
 
 <ng-template #deleteAppointmentModal>
     <app-delete-confirmation-modal

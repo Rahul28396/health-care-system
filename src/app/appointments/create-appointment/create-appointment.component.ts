@@ -11,13 +11,6 @@ import { Address } from 'src/app/models/address.model';
   styleUrls: ['./create-appointment.component.scss']
 })
 export class CreateAppointmentComponent {
-
-  @Output()
-  onSubmit: EventEmitter<Appointment> = new EventEmitter<Appointment>();
-
-  @Output()
-  onClose: EventEmitter<void> = new EventEmitter<void>();
-
   appointmentService = inject(AppointmentsService);
   formBuilderService = inject(FormBuilder);
 
@@ -77,10 +70,9 @@ export class CreateAppointmentComponent {
     newAppoitment.deptName = formValue.deptName as string;
     newAppoitment.doctorName = formValue.doctorName as string;
     newAppoitment.symptoms = this.symptoms.value as Array<string>;
-    this.onSubmit.emit(newAppoitment);
   }
 
-  closeModal(){
-    this.onClose.emit();
+  goToPreviousPage(){
+    
   }
 }

@@ -1,13 +1,11 @@
 <form [formGroup]="appointmentForm" (ngSubmit)="onSave()">
-    <div id="createAppointmentModal" tabindex="-1" aria-labelledby="createAppointmentModalLabel" aria-hidden="true"
-        data-bs-backdrop="static" data-bs-keyboard="false">
+    <div id="createAppointmentModal" aria-labelledby="createAppointmentModalLabel">
         <div>
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="createAppointmentModalLabel">Create new appointment</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+            <div class="create-appointment-content">
+                <div class="create-appointment-header">
+                    <h1 class="create-appointment-title fs-5" id="createAppointmentModalLabel">Create new appointment</h1>
                 </div>
-                <div class="modal-body">
+                <div class="create-appointment-body">
                     <div class="row g-3">
                         <div class="col-md-6">
                             <label for="firstName" class="form-label">First Name</label>
@@ -72,8 +70,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+                <div class="create-appointment-footer">
+                    <button type="button" class="btn btn-secondary" (click)="goToPreviousPage()">Back</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
