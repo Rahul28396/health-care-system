@@ -1,0 +1,20 @@
+.department-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.department-card{
+    width: 20rem;
+    margin: 12px;
+
+    &__button-group{
+        display: flex;
+        justify-content:center;
+        gap: 12;
+    }
+
+    &__button{
+        width: 100px;
+    }
+}

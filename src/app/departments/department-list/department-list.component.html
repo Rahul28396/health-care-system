@@ -1,1 +1,41 @@
-<p>department-list works!</p>
+<section class="container">
+    <h2>Departments</h2>
+
+    <section class="department-list">
+        <div class="card department-card" *ngFor="let department of departmentList">
+            <img [src]="department.image" class="card-img-top" [title]="department.name + ' image'" [alt]="department.name + ' image'">
+            <div class="card-body">
+                <h5 class="card-title">{{department.name}}</h5>
+                <p class="card-text text-overflow-clamp">{{department.description}}</p>
+
+                <section class="department-card__button-group">
+                    <button class="btn btn-primary m-4 department-card__button">Edit</button>
+                    <button 
+                        class="btn btn-primary m-4 department-card__button"
+                        (click)="openDeleteDepartmentModal(deleteAppointmentModal,department)"
+                    >
+                        Delete
+                    </button>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <button type="button" class="btn btn-primary fixed bottom-right" (click)="openDepartmentModal(departmentModal)">
+        <i class="fa-solid fa-plus"></i>
+        Create new department
+    </button>
+</section>
+
+<ng-template #departmentModal>
+    <app-department-modal-wrapper (save)="saveDepartment($event)" (close)="closeModal()" />
+</ng-template>
+
+<ng-template #deleteAppointmentModal>
+    <app-delete-confirmation-modal
+        [title]="deleteConfirmationText"
+        [element]="selectedDepartment"
+        (onClose)="closeModal()" 
+        (onSubmit)="deleteDepartment($event)"
+    />
+</ng-template>1

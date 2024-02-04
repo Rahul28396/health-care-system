@@ -51,11 +51,15 @@ export class AppointmentListComponent implements OnInit {
   openDeleteAppointmentModal(templateRef: TemplateRef<void>, element: Appointment): void {
     this.deleteConfirmationText = `Do you sure want to delete appointment: ${element.id}?`
     this.selectedAppointment = element;
-    this.modalRef = this.modalService.show(templateRef);
+    this.modalRef = this.modalService.show(templateRef,{
+      class: 'modal-dialog-centered'
+    });
   }
 
   openCreateAppointmentModal(templateRef: TemplateRef<void>) {
-    this.modalRef = this.modalService.show(templateRef);
+    this.modalRef = this.modalService.show(templateRef,{
+      class: 'modal-dialog-centered'
+    });
   }
 
   closeModal() {

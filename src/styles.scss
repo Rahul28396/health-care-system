@@ -27,26 +27,35 @@ tr:nth-child(even) {
   background-color: #cc5858;
 }
 
-.fixed{
+.fixed {
   position: fixed;
 }
 
-.bottom-right{
+.bottom-right {
   bottom: 24px;
   right: 48px;
 }
 
-.text-align-left{
+.text-align-left {
   text-align: left;
 }
 
-.text-align-center{
+.text-align-center {
   text-align: center;
 }
 
-.error-text{
+.error-text {
   color: #cc5858;
   font-weight: 500;
+}
+
+.text-overflow-clamp {
+  width: 100%;
+  /* this code clamps based on specified lines */
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  display: -webkit-box;
 }
 
 /* Importing Bootstrap SCSS file. */

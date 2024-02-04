@@ -1,0 +1,33 @@
+<form [formGroup]="departmentForm" (ngSubmit)="onSave()">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="createDepartmentModalLabel">Create new department</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            (click)="closeModal()"></button>
+    </div>
+    <div class="modal-body">
+        <div class="row g-3">
+            <div class="col-md-12">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" formControlName="name">
+                <div *ngIf="name?.invalid && (name?.dirty || name?.touched)">
+                    <p class="error-text" *ngIf="name?.errors?.['required']">Department name is required</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <label for="description" class="form-label">Description</label>
+                <textarea rows="4" class="form-control" id="description" formControlName="description"></textarea>
+                <div *ngIf="description?.invalid && (description?.dirty || description?.touched)">
+                    <p class="error-text" *ngIf="description?.errors?.['required']">Department description is required</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <label for="image" class="form-label">Image</label>
+                <input type="file" class="form-control" id="image" formControlName="image">
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+    </div>
+</form>
